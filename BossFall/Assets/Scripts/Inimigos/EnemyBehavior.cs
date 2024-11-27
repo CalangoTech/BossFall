@@ -4,7 +4,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     [Header("Enemy Settings")]
     public int maxHealth = 100; // Vida máxima do inimigo
-    private int currentHealth;  // Vida atual do inimigo
+    public int currentHealth;  // Vida atual do inimigo
 
     [Header("Animation Settings")]
     public Animator animator;  // Referência ao Animator

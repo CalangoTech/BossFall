@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 73aadc00d50f7d74193c2def07d3e943, type: 3}
       propertyPath: m_TagString
-      value: Archer
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 73aadc00d50f7d74193c2def07d3e943, type: 3}
       propertyPath: m_Controller
