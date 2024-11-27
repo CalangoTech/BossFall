@@ -8,15 +8,18 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Animation Settings")]
     public Animator animator;  // Referência ao Animator
-    private bool isDead = false; // Condição de morte para evitar múltiplos acionamentos
+    public bool isDead = false; // Condição de morte para evitar múltiplos acionamentos
 
     [Header("Destroy Settings")]
     public float destroyDelay = 25f / 60f; // Tempo em segundos baseado nos frames e no FPS
 
+    [Header("Soul Settings")]
+    public int minSouls = 10; // Valor mínimo de almas
+    public int maxSouls = 50; // Valor máximo de almas
+
     void Start()
     {
-        // Inicializa a vida do inimigo
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // Inicializa a vida do inimigo
     }
 
     public void TakeDamage(int damage)
@@ -37,7 +40,21 @@ public class EnemyBehavior : MonoBehaviour
         isDead = true; // Marca que o inimigo está morto
         animator.SetTrigger("Die"); // Aciona a animação de morte
 
+        // Chama o método para dar almas ao jogador
+        GiveSouls();
+
         // Remove o corpo após o delay configurado
         Destroy(gameObject, destroyDelay);
+    }
+
+    // Método para dar almas ao jogador
+    public void GiveSouls()
+    {
+        if (!isDead == true)
+        {
+            int soulsToGive = Random.Range(minSouls, maxSouls + 1); // Sorteia a quantidade de almas
+            GameManager.Instance.AddSouls(soulsToGive); // Adiciona as almas no GameManager}
+
+        }
     }
 }
